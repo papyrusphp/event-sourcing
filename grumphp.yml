@@ -1,0 +1,11 @@
+grumphp:
+    tasks:
+        composer_require_checker: ~
+        phpstan:
+            configuration: phpstan.neon
+        phpcsfixer:
+            config: .php-cs-fixer.php
+            verbose: true
+            allow_risky: true
+        phpunit:
+            config_file: phpunit.xml
