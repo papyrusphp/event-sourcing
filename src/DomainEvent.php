@@ -6,7 +6,7 @@ namespace Papyrus\EventSourcing;
 
 interface DomainEvent
 {
-    public function getEventName(): string;
+    public static function getEventName(): string;
 
     public function getAggregateRootId(): string;
 }

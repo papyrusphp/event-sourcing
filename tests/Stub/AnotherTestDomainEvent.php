@@ -8,7 +8,7 @@ use Papyrus\EventSourcing\DomainEvent;
 
 final class AnotherTestDomainEvent implements DomainEvent
 {
-    public function getEventName(): string
+    public static function getEventName(): string
     {
         return 'test.another_domain_event';
     }
