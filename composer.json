@@ -24,7 +24,8 @@
         "maglnet/composer-require-checker": "^4.2",
         "phpro/grumphp-shim": "^1.13",
         "phpstan/phpstan": "^1.8",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "scrutinizer/ocular": "^1.9"
     },
     "autoload": {
         "psr-4": {
