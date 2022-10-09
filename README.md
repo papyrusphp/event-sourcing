@@ -1,4 +1,11 @@
 # 📜 Papyrus Event Sourcing
+[![Build Status](https://scrutinizer-ci.com/g/papyrusphp/event-sourcing/badges/build.png?b=main)](https://github.com/papyrusphp/event-sourcing/actions)
+[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/papyrusphp/event-sourcing.svg?style=flat)](https://scrutinizer-ci.com/g/papyrusphp/event-sourcing/code-structure)
+[![Quality Score](https://img.shields.io/scrutinizer/g/papyrusphp/event-sourcing.svg?style=flat)](https://scrutinizer-ci.com/g/papyrusphp/event-sourcing)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE)
+[![Packagist Version](https://img.shields.io/packagist/v/papyrus/event-sourcing.svg?style=flat&include_prereleases)](https://packagist.org/packages/papyrus/event-sourcing)
+[![PHP Version](https://img.shields.io/badge/php-%5E8.1-8892BF.svg?style=flat)](http://www.php.net)
+
 Yet another event sourcing library for PHP.
 
 ### Why another library?
