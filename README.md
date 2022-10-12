@@ -23,7 +23,7 @@ Questions, ideas and change requests are always welcome 🤗
 ### Installation
 Install via composer:
 ```bash
-$ composer install papyrus/event-sourcing
+composer require papyrus/event-sourcing
 ```
 
 ### How to use
