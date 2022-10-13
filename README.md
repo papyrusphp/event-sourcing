@@ -84,11 +84,6 @@ final class YourAggregateRootOpenedEvent implements DomainEvent
         public readonly string $yourAggregateRootId,
         public readonly string $somethingElse,
     ) {}
-    
-    public function getEventName(): string
-    {
-        return 'your_aggregate_root.opened';
-    }
 
     public function getAggregateRootId(): string
     {
