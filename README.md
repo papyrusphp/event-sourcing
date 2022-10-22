@@ -22,8 +22,8 @@ Papyrus only provides an event store, in order to persist your event driven aggr
 However, this repository (which you're reading now) does contain code;
 as an example of how you can create the necessary domain layer classes
 in order to use [papyrus/event-store](https://github.com/papyrusphp/event-store).
-It is not meant to use directly in your domain layer.
+You can copy these classes or create your own. 
 
-**Don't use this code!** 🙃
+This repository is not meant to use directly via composer in your domain layer. 🙃
 
 Questions, ideas and change requests are always welcome 🤗
