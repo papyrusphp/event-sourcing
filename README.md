@@ -27,3 +27,83 @@ You can copy these classes or create your own.
 This repository is not meant to use directly via composer in your domain layer. 🙃
 
 Questions, ideas and change requests are always welcome 🤗
+
+### How to use
+A **simplified** example aggregate root, using the example classes in `/src`:
+```php
+use Papyrus\EventSourcing\AggregateRootId;
+use Papyrus\EventSourcing\DomainEvent;
+use Papyrus\EventSourcing\EventSourceableAggregateRootTrait;
+use Papyrus\EventSourcing\EventSourcedAggregateRoot;
+
+final class YourAggregateRoot implements EventSourcedAggregateRoot
+{
+    use EventSourceableAggregateRootTrait;
+    
+    // Only add properties when they influence state
+    private YourAggregateRootId $yourAggregateRootId;
+    
+    // No need for the public __construct()
+    // Create a domain understandable named constructor instead
+    public static function open(YourAggregateRootId $yourAggregateRootId, string $somethingElse): self
+    {
+        $aggregateRoot = new self();
+        $aggregateRoot->apply(new YourAggregateRootOpenedEvent(
+            (string) $yourAggregateRootId, // Add primitives only to avoid indirect hidden event mutability
+            $somethingElse
+        ));
+        
+        return $aggregateRoot;
+    }
+    
+    // Other behavioral methods
+    // ...
+    
+    public function doSomething(string $something): void
+    {
+        // Check idempotency
+        // Protect invariants
+        
+        $this->apply(new SomethingHappenedEvent((string) $yourAggregateRootId, $something));
+    }
+    
+    // (Optional) apply* event methods for state-influencing parameters 
+    protected function applyYourAggregateRootOpenedEvent(YourAggregateRootOpenedEvent $event): void
+    {
+        $this->yourAggregateRootId = new YourAggregateRootId($event->yourAggregateRootId);
+        // other state-influencing parameters
+        // ...
+    }
+}
+
+// A domain event
+final class YourAggregateRootOpenedEvent implements DomainEvent
+{
+    public function __construct(
+        public readonly string $yourAggregateRootId,
+        public readonly string $somethingElse,
+    ) {}
+
+    public function getAggregateRootId(): string
+    {
+        return $this->yourAggregateRootId;
+    }
+}
+
+// The aggregate root identifier VO
+final class YourAggregateRootId implements AggregateRootId
+{
+    // your implementation
+    
+    public function __toString(): string
+    {
+        return '';
+    }
+}
+```
+
+### Persistence (Event store)
+Without persisting the applied events of the aggregate root, we cannot really speak of event-sourcing 😉
+(sometimes you want event-driven aggregate roots without event sourcing...).
+
+For implementation details, see [papyrus/event-store](https://github.com/papyrusphp/event-store).
